@@ -33,7 +33,7 @@ So, the default `config.js` entry for this module could look like this:
 ```
 
 ### Birthdays Array
-The birthdays array is a list of JSON objects containing the following fields:
+The birthdays array is a list of JSON objects containing the following fields (if you have to list a lot of birthdays it can also be a separate file instead, see the `birthdays.json` section):
 
 | Option  | Description  | Example  |
 |---|---|---|
