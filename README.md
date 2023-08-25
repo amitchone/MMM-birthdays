@@ -1,7 +1,7 @@
 # MMM-birthdays
 A birthday reminder module for MichMich's [MagicMirror](https://magicmirror.builders/).
 
-![Screenshot](/screenshots/MMM-birthdays_screenshot.png?raw=true "Screenshot")
+![Screenshot](https://github.com/amitchone/MMM-birthdays/blob/screenshot/MMM-birthdays_screenshot.png "Screenshot")
 
 ## Installation
 - Navigate to your MagicMirror `modules` folder and clone this repository using: `https://github.com/amitchone/MMM-birthdays.git`
