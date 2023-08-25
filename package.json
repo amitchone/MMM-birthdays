@@ -1,0 +1,14 @@
+{
+  "name": "mmm-birthdays",
+  "version": "0.1.0",
+  "description": "Automated birthday reminders for MichMich's MagicMirror",
+  "main": "MMM-birthdays.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam Mitchell",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "moment": "^2.29.4"
+  }
+}
