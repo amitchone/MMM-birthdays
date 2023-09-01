@@ -67,8 +67,6 @@ module.exports = NodeHelper.create({
                         "ord": dtb,
                         "who": `${name} will be ${new_age} in ${dtb} ${days}`,
                     });
-
-                    console.log(`mmm-birthdays: ${name} will be ${new_age} in ${dtb} ${days}`)
                 }
             }
 
@@ -81,8 +79,6 @@ module.exports = NodeHelper.create({
                         "ord": dtb,
                         "who": `${name} was ${cur_age} ${Math.abs(dtb)} ${days} ago`,
                     });
-
-                    console.log(`mmm-birthdays: ${name} was ${cur_age} ${Math.abs(dtb)} ${days} ago`)
                 }
             }
             
@@ -91,8 +87,6 @@ module.exports = NodeHelper.create({
                     "ord": dtb,
                     "who": `${name} is ${cur_age} today!`,
                 });
-                
-                console.log(`mmm-birthdays: ${name} is ${cur_age} today!`)
             }
         }
 

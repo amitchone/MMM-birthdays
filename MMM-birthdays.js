@@ -42,6 +42,14 @@ Module.register("MMM-birthdays", {
     },
 
     start: function () {
-        setInterval(this.sendSocketNotification("GET_BIRTHDAYS", this.config), this.config.update_internal);
+        /**
+         * Declaring mm as this so that we have access to this inside of unnamed function in 
+         * setInterval where this is out of scope
+         */
+        const mm = this;
+
+        setInterval(function () { 
+            mm.sendSocketNotification("GET_BIRTHDAYS", mm.config)
+        }, mm.config.update_internal * 1000);
     }
 });
