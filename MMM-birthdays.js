@@ -5,7 +5,7 @@ Module.register("MMM-birthdays", {
     defaults: {
         notify_days_before: 14,
         notify_days_after: 2,
-        update_internal: 600,
+        update_interval: 600,
         display_dates: null,
     },
 
@@ -48,8 +48,13 @@ Module.register("MMM-birthdays", {
          */
         const mm = this;
 
+        /**
+         * Call this initially, then at the interval specified
+         */
+        mm.sendSocketNotification("GET_BIRTHDAYS", mm.config);
+
         setInterval(function () { 
             mm.sendSocketNotification("GET_BIRTHDAYS", mm.config)
-        }, mm.config.update_internal * 1000);
+        }, mm.config.update_interval * 1000);
     }
 });
