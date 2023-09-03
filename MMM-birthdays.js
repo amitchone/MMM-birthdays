@@ -20,23 +20,35 @@ Module.register("MMM-birthdays", {
 
     getDom: function() {
         var wrapper = document.createElement("div");
+        wrapper.className = "module-content";
+
         wrapper.innerHTML = `
-          <header class="module-header">BIRTHDAYS</header>
+            <header class="module-header">BIRTHDAYS</header>
         `
 
+        var table = document.createElement("table");
+        table.className = "small";
+
         if (this.config.display_dates !== null) {
+            wrapper.innerHTML += `
+                <table class="small>
+                    <tbody>
+            `
+
             for (i in this.config.display_dates) {
                 console.log(this.config.display_dates[i].who);
 
-                const p = document.createElement("p");
-                p.innerHTML += `<p style="text-align:left;">${this.config.display_dates[i].who}</p>`
+                var tr = document.createElement("tr");
+                tr.innerHTML += `<td class="day" style="text-align: left">${this.config.display_dates[i].who}</td>`
 
-                wrapper.appendChild(p);
+                table.appendChild(tr);
             }
         }
         else {
             wrapper.innerHTML += 'No birthdays upcoming';
         }
+
+        wrapper.appendChild(table);
 
         return wrapper;
     },
