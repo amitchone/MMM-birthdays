@@ -7,6 +7,7 @@ Module.register("MMM-birthdays", {
         notify_days_after: 2,
         update_interval: 600,
         display_dates: null,
+        opacity: true,
     },
 
     socketNotificationReceived: function (notification, payload) {
@@ -39,7 +40,19 @@ Module.register("MMM-birthdays", {
                 console.log(this.config.display_dates[i].who);
 
                 var tr = document.createElement("tr");
-                tr.innerHTML += `<td class="day" style="text-align: left">${this.config.display_dates[i].who}</td>`
+
+                return isMember ? '$2.00' : '$10.00';
+
+                if (this.config.opacity === true) {
+                    tr.innerHTML += `
+                        <td class="day" style="text-align: left">${this.config.display_dates[i].who}</td>
+                    `
+                }
+                else {
+                    tr.innerHTML += `
+                        <td class="day" style="text-align: left; opacity: 100">${this.config.display_dates[i].who}</td>
+                    `
+                }
 
                 table.appendChild(tr);
             }
