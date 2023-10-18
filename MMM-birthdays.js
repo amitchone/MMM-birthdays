@@ -40,12 +40,12 @@ Module.register("MMM-birthdays", {
                 console.log(this.config.display_dates[i].who);
 
                 var tr = document.createElement("tr");
-                
+
                 if (this.config.opacity !== true) {
-                    tr.style += "opacity: 1"
+                    tr.style.opacity = 1;
                 }
 
-                tr.innerHTML += `<td class="day" style="text-align: left">${this.config.display_dates[i].who}</td>`
+                tr.innerHTML += `<td class="day" style="text-align: left">${this.config.display_dates[i].who}</td>`;
 
                 table.appendChild(tr);
             }
