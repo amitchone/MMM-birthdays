@@ -41,8 +41,6 @@ Module.register("MMM-birthdays", {
 
                 var tr = document.createElement("tr");
 
-                return isMember ? '$2.00' : '$10.00';
-
                 if (this.config.opacity === true) {
                     tr.innerHTML += `
                         <td class="day" style="text-align: left">${this.config.display_dates[i].who}</td>
