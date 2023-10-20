@@ -46,7 +46,6 @@ Module.register("MMM-birthdays", {
 
                 var tr = document.createElement("tr");
 
-                console.log(self.config.opacity)
                 if (self.config.opacity === true) {
                     tr.style.opacity = i < opacities.length ? opacities[i] : opacities[opacities.length - 1];
                 }
