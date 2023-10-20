@@ -39,26 +39,20 @@ Module.register("MMM-birthdays", {
                     <tbody>
             `
 
-            // var myArray = [123, 15, 187, 32];
-
-            // myArray.forEach(function (value, i) {
-            //     console.log('%d: %s', i, value);
-            // });
+            let self = this;
 
             this.config.display_dates.forEach(function (date, i) {
                 console.log(date.who);
 
                 var tr = document.createElement("tr");
 
-                if (this.config.opacity === true) {
-                    tr.style.opacity = 1;
+                console.log(self.config.opacity)
+                if (self.config.opacity === true) {
+                    tr.style.opacity = i < opacities.length ? opacities[i] : opacities[opacities.length - 1];
                 }
                 else {
                     tr.style.opacity = 1;
                 }
-                // else {
-                //     1, 1, 0.8, 0.53, 0.26
-                // }
 
                 tr.innerHTML += `<td class="day" style="text-align: left">${date.who}</td>`;
 
