@@ -42,7 +42,13 @@ module.exports = NodeHelper.create({
     },
   
     days_to_birthday: function (m_dob) {
-        return moment(moment().format("YYYY") + m_dob.format("-MM-DD")).diff(moment().format("YYYY-MM-DD"), "days");
+        var dtb = moment(moment().format("YYYY") + m_dob.format("-MM-DD")).diff(moment().format("YYYY-MM-DD"), "days");
+
+        if (dtb < 0) {  
+            dtb = moment(moment().add(1, "y").format("YYYY") + m_dob.format("-MM-DD")).diff(moment().format("YYYY-MM-DD"), "days");
+        }
+
+        return dtb;
     },
 
     parse_birthdays: function (birthdays) {
@@ -71,22 +77,7 @@ module.exports = NodeHelper.create({
                     console.log(`mmm-birthdays: ${name} will be ${new_age} in ${dtb} ${days}`)
                 }
             }
-
-            if (dtb < 0) {
-                if (Math.abs(dtb) <= this.config.notify_days_after) {
-                    var days = "day"
-                    if (Math.abs(dtb) > 1) days += "s"
-
-                    display_birthdays.push({
-                        "ord": dtb,
-                        "who": `${name} was ${cur_age} ${Math.abs(dtb)} ${days} ago`,
-                    });
-
-                    console.log(`mmm-birthdays: ${name} was ${cur_age} ${Math.abs(dtb)} ${days} ago`)
-                }
-            }
-            
-            if (dtb == 0) {
+            else if (dtb == 0) {
                 display_birthdays.push({
                     "ord": dtb,
                     "who": `${name} is ${cur_age} today!`,

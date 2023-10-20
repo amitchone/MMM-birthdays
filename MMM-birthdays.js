@@ -7,7 +7,6 @@ const opacities = [ 1, 1, 0.8, 0.53, 0.26 ];
 Module.register("MMM-birthdays", {
     defaults: {
         notify_days_before: 14,
-        notify_days_after: 2,
         update_interval: 600,
         display_dates: null,
         opacity: true,
@@ -73,6 +72,10 @@ Module.register("MMM-birthdays", {
          * setInterval where this is out of scope
          */
         const mm = this;
+
+        if (mm.config.notify_days_before > 365) {
+            mm.config.notify_days_before = 365;
+        }
 
         /**
          * Call this initially, then at the interval specified
