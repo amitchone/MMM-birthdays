@@ -1,6 +1,9 @@
 // mmm-birthdays.js
 
 
+const opacities = [ 1, 1, 0.8, 0.53, 0.26 ];
+
+
 Module.register("MMM-birthdays", {
     defaults: {
         notify_days_before: 14,
@@ -36,19 +39,31 @@ Module.register("MMM-birthdays", {
                     <tbody>
             `
 
-            for (i in this.config.display_dates) {
-                console.log(this.config.display_dates[i].who);
+            // var myArray = [123, 15, 187, 32];
+
+            // myArray.forEach(function (value, i) {
+            //     console.log('%d: %s', i, value);
+            // });
+
+            this.config.display_dates.forEach(function (date, i) {
+                console.log(date.who);
 
                 var tr = document.createElement("tr");
 
-                if (this.config.opacity !== true) {
+                if (this.config.opacity === true) {
                     tr.style.opacity = 1;
                 }
+                else {
+                    tr.style.opacity = 1;
+                }
+                // else {
+                //     1, 1, 0.8, 0.53, 0.26
+                // }
 
-                tr.innerHTML += `<td class="day" style="text-align: left">${this.config.display_dates[i].who}</td>`;
+                tr.innerHTML += `<td class="day" style="text-align: left">${date.who}</td>`;
 
                 table.appendChild(tr);
-            }
+            });
         }
         else {
             wrapper.innerHTML += 'No birthdays upcoming';
