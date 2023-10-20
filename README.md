@@ -16,6 +16,7 @@ This module is intended to be extremely simple to use and therefore only provide
 | notify_days_before  | Number of days before birthday that notifications should start to be shown  | 14  |
 | notify_days_after  | Number of days after birthday that notification should still be shown  | 2  |
 | update_internal  | Number of seconds between updating displayed birthdays  | 600  |
+| opacity  | A boolean option to indicate whether subsequent birthday rows beyond three should fade out (think weather forecast module) or not | true  |
 | birthdays  | An array of `birthdays` objects as described below | See below  |
 
 So, the default `config.js` entry for this module could look like this:
@@ -27,7 +28,8 @@ So, the default `config.js` entry for this module could look like this:
     config: {
         notify_days_before: 14,
         notify_days_after: 2,
-        update_interval: 600
+        update_interval: 600,
+        opacity: true
     }
 }
 ```
