@@ -9,13 +9,15 @@ Module.register("MMM-birthdays", {
         notify_days_before: 14,
         update_interval: 600,
         display_dates: null,
+        title: null,
         opacity: true,
         locale: "en_GB",
     },
 
     socketNotificationReceived: function (notification, payload) {
         if (notification === "RECV_BIRTHDAYS") {
-            this.config.display_dates = payload;
+            this.config.display_dates = payload.birthdays;
+            this.config.title = payload.title;
             this.getDom();
         }
 
@@ -27,7 +29,7 @@ Module.register("MMM-birthdays", {
         wrapper.className = "module-content";
 
         wrapper.innerHTML = `
-            <header class="module-header">BIRTHDAYS</header>
+            <header class="module-header">${this.config.title}</header>
         `
 
         var table = document.createElement("table");

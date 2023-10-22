@@ -114,7 +114,7 @@ module.exports = NodeHelper.create({
         if (display_birthdays.length > 0) {
             display_birthdays.sort((a, b) => a.ord - b.ord);
 
-            this.sendSocketNotification("RECV_BIRTHDAYS", display_birthdays);
+            this.sendSocketNotification("RECV_BIRTHDAYS", {birthdays: display_birthdays, title: this.config.loc_data.title});
         }
     },
 });
