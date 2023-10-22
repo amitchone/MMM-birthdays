@@ -10,6 +10,7 @@ Module.register("MMM-birthdays", {
         update_interval: 600,
         display_dates: null,
         opacity: true,
+        locale: "en_GB",
     },
 
     socketNotificationReceived: function (notification, payload) {
