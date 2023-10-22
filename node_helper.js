@@ -82,15 +82,18 @@ module.exports = NodeHelper.create({
 
             if (dtb > 0) {
                 if (dtb <= this.config.notify_days_before) {
-                    var days = "day"
-                    if (dtb > 1) days += "s"
+                    var who = (dtb > 1) ? this.config.loc_data.phrase.u_m : this.config.loc_data.phrase.u_s;
+
+                    who = String(who).replace("{NAME}", name);
+                    who = String(who).replace("{AGE}", new_age);
+                    who = String(who).replace("{DAYS}", dtb);
 
                     display_birthdays.push({
                         "ord": dtb,
-                        "who": `${name} will be ${new_age} in ${dtb} ${days}`,
+                        "who": who
                     });
 
-                    console.log(`mmm-birthdays: ${name} will be ${new_age} in ${dtb} ${days}`)
+                    console.log(`mmm-birthdays: ${who}`)
                 }
             }
             else if (dtb == 0) {
