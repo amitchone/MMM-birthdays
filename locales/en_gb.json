@@ -4,6 +4,7 @@
         "u_m": "{NAME} will be {AGE} in {DAYS} days",
         "u_s": "{NAME} will be {AGE} in 1 day",
         "p_m": "{NAME} was {AGE} {DAYS} ago",
-        "p_s": "{NAME} was {AGE} 1 day ago"
+        "p_s": "{NAME} was {AGE} 1 day ago",
+        "t": "{NAME} is {AGE} today!"
     }
 }
