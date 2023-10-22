@@ -97,9 +97,14 @@ module.exports = NodeHelper.create({
                 }
             }
             else if (dtb == 0) {
+                var who = this.config.loc_data.phrase.t;
+
+                who = String(who).replace("{NAME}", name);
+                who = String(who).replace("{AGE}", cur_age);
+
                 display_birthdays.push({
                     "ord": dtb,
-                    "who": `${name} is ${cur_age} today!`,
+                    "who": who
                 });
                 
                 console.log(`mmm-birthdays: ${name} is ${cur_age} today!`)
