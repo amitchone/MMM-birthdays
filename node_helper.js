@@ -10,9 +10,25 @@ module.exports = NodeHelper.create({
         this.config = payload;
 
 		if (notification === "GET_BIRTHDAYS") {
+            this.config.loc_data = this.get_locale(this.config.locale);
 			this.get_birthdays(this.config);
 		}
 	},
+
+    get_locale: function (locale) {
+        var loc_data;
+
+        try {
+            console.log(`mmm-birthdays: using locale ${locale}`);
+            loc_data = JSON.parse(fs.readFileSync(`${__dirname}/locales/${String(locale).toLowerCase()}.json`), "utf-8");
+        }
+        catch (e) {
+            console.log(`mmm-birthdays: locale ${locale} is not supported, falling back to en_GB`);
+            loc_data = JSON.parse(fs.readFileSync(`${__dirname}/locales/en_gb.json`), "utf-8");
+        }
+        
+        return loc_data;
+    },
 
     get_birthdays: function () {
         var birthdays = null;
