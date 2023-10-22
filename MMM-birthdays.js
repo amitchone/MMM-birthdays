@@ -37,7 +37,7 @@ Module.register("MMM-birthdays", {
 
         if (this.config.display_dates !== null) {
             wrapper.innerHTML += `
-                <table class="small>
+                <table class="small">
                     <tbody>
             `
 
