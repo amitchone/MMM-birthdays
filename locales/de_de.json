@@ -1,0 +1,10 @@
+{
+    "title": "GEBURTSTAGE",
+    "phrase": {
+        "u_m": "{NAME} wird in {DAYS} Tagen {AGE}",        
+        "u_s": "{NAME} wird in {DAYS} Tag {AGE} sein",
+        "p_m": "{NAME} wurde vor {DAYS} Tagen {AGE} Jahre alt",
+        "p_s": "{NAME} wurde vor {DAYS} Tag {AGE}",
+        "t": "{NAME} wird heute {AGE}!"
+    }
+}
