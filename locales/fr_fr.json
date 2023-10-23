@@ -1,0 +1,10 @@
+{
+    "title": "ANNIVERSAIRES",
+    "phrase": {
+        "u_m": "{NAME} aura {AGE} ans dans {DAYS} jours",
+        "u_s": "{NAME} aura {AGE} ans dans {DAYS} jour",
+        "p_m": "{NAME} avait {AGE} ans il y a {DAYS} jours",
+        "p_s": "{NAME} avait {AGE} ans il y a {DAYS} jour",
+        "t": "{NAME} a {AGE} ans aujourd'hui !"
+    }
+}
