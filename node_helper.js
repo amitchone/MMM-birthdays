@@ -10,9 +10,25 @@ module.exports = NodeHelper.create({
         this.config = payload;
 
 		if (notification === "GET_BIRTHDAYS") {
+            this.config.loc_data = this.get_locale(this.config.locale);
 			this.get_birthdays(this.config);
 		}
 	},
+
+    get_locale: function (locale) {
+        var loc_data;
+
+        try {
+            console.log(`mmm-birthdays: using locale ${locale}`);
+            loc_data = JSON.parse(fs.readFileSync(`${__dirname}/locales/${String(locale).toLowerCase()}.json`), "utf-8");
+        }
+        catch (e) {
+            console.log(`mmm-birthdays: locale ${locale} is not supported, falling back to en_GB`);
+            loc_data = JSON.parse(fs.readFileSync(`${__dirname}/locales/en_gb.json`), "utf-8");
+        }
+        
+        return loc_data;
+    },
 
     get_birthdays: function () {
         var birthdays = null;
@@ -66,21 +82,29 @@ module.exports = NodeHelper.create({
 
             if (dtb > 0) {
                 if (dtb <= this.config.notify_days_before) {
-                    var days = "day"
-                    if (dtb > 1) days += "s"
+                    var who = (dtb > 1) ? this.config.loc_data.phrase.u_m : this.config.loc_data.phrase.u_s;
+
+                    who = String(who).replace("{NAME}", name);
+                    who = String(who).replace("{AGE}", new_age);
+                    who = String(who).replace("{DAYS}", dtb);
 
                     display_birthdays.push({
                         "ord": dtb,
-                        "who": `${name} will be ${new_age} in ${dtb} ${days}`,
+                        "who": who
                     });
 
-                    console.log(`mmm-birthdays: ${name} will be ${new_age} in ${dtb} ${days}`)
+                    console.log(`mmm-birthdays: ${who}`)
                 }
             }
             else if (dtb == 0) {
+                var who = this.config.loc_data.phrase.t;
+
+                who = String(who).replace("{NAME}", name);
+                who = String(who).replace("{AGE}", cur_age);
+
                 display_birthdays.push({
                     "ord": dtb,
-                    "who": `${name} is ${cur_age} today!`,
+                    "who": who
                 });
                 
                 console.log(`mmm-birthdays: ${name} is ${cur_age} today!`)
@@ -90,7 +114,7 @@ module.exports = NodeHelper.create({
         if (display_birthdays.length > 0) {
             display_birthdays.sort((a, b) => a.ord - b.ord);
 
-            this.sendSocketNotification("RECV_BIRTHDAYS", display_birthdays);
+            this.sendSocketNotification("RECV_BIRTHDAYS", {birthdays: display_birthdays, title: this.config.loc_data.title});
         }
     },
 });
