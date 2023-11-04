@@ -1,0 +1,10 @@
+{
+    "title": "COMPLEANNI",
+    "phrase": {
+        "u_m": "{NAME} compierà {AGE} anni tra {DAYS} giorni",
+        "u_s": "{NAME} compierà {AGE} anni tra {DAYS} giorno",
+        "p_m": "{NAME} ha compiuto {AGE} {DAYS} fa",
+        "p_s": "{NAME} ha compiuto {AGE} {DAYS} giorni fa",
+        "t": "{NAME} compie {AGE} oggi!"
+    }
+}
