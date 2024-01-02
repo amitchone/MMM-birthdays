@@ -16,8 +16,10 @@ This module is intended to be extremely simple to use and therefore only provide
 | notify_days_before  | Number of days before birthday that notifications should start to be shown - any value greater than 365 will be floored to 365. Set to 0 to only show birthdays on the day  | 14  |
 | update_internal  | Number of seconds between updating displayed birthdays  | 600  |
 | opacity  | A boolean option to indicate whether subsequent birthday rows beyond three should fade out (think weather forecast module) or not | true  |
+| title  | A string to show as the header | birthdays  |
 | locale  | A string used to set language for module (not case-sensitive):<br /><br />English: `en_GB` <br />French: `fr_FR` <br />German: `de_DE` <br />Spanish: `es_ES` <br /> Italian: `it_IT` | `en_GB`  |
 | birthdays  | An array of `birthdays` objects as described below | See below  |
+| show_no_birthdays  | A boolean option to indicate whether to show the header and a message when there are no upcoming birthdays. | true  |
 
 So, the default `config.js` entry for this module could look like this:
 
@@ -29,7 +31,9 @@ So, the default `config.js` entry for this module could look like this:
         notify_days_before: 14,
         update_interval: 600,
         opacity: true,
+        title: "Our Birthdays",
         locale: "en_GB",
+        show_no_birthdays: true
     }
 }
 ```
@@ -52,7 +56,9 @@ As this is an array, it can contain multiple `birthdays` objects. The example be
         notify_days_before: 14,
         update_interval: 600,
         opacity: true,
+        title: "Our Birthdays",
         locale: "en_GB",
+        show_no_birthdays: true,
         birthdays: [
             {
                 name: "Adam",
