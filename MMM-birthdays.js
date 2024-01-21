@@ -9,15 +9,16 @@ Module.register("MMM-birthdays", {
         notify_days_before: 14,
         update_interval: 600,
         display_dates: null,
-        title: null,
+        title: "birthdays",
         opacity: true,
         locale: "en_GB",
+		show_no_birthdays: true,        
     },
 
     socketNotificationReceived: function (notification, payload) {
         if (notification === "RECV_BIRTHDAYS") {
             this.config.display_dates = payload.birthdays;
-            this.config.title = payload.title;
+            //this.config.title = payload.title; //Commented out because it overwrites the title variable.
             this.getDom();
         }
 
@@ -28,9 +29,12 @@ Module.register("MMM-birthdays", {
         var wrapper = document.createElement("div");
         wrapper.className = "module-content";
 
-        wrapper.innerHTML = `
-            <header class="module-header">${this.config.title}</header>
-        `
+		// if there are no dates to show, then don't show the header/title
+		if (this.config.display_dates !== null) {
+            wrapper.innerHTML = `
+                <header class="module-header">${this.config.title}</header>
+            `
+        }    
 
         var table = document.createElement("table");
         table.className = "small";
@@ -61,7 +65,13 @@ Module.register("MMM-birthdays", {
             });
         }
         else {
-            wrapper.innerHTML += 'No birthdays upcoming';
+				// if the config file is set (true) to show the fact there are no birthdays, then show the statement "no birthdays upcoming"
+                if (this.config.show_no_birthdays) {
+					wrapper.innerHTML = `
+						<header class="module-header">${this.config.title}</header>
+					`					
+                    wrapper.innerHTML += 'No birthdays upcoming';
+                }
         }
 
         wrapper.appendChild(table);
