@@ -1,0 +1,10 @@
+{
+    "title": "BIRTHDAYS",
+    "phrase": {
+        "u_m": "{NAME} bude mať {AGE} rokov za {DAYS} dní.",
+        "u_s": "{NAME} bude mať {AGE} rokov za {DAYS} deň.",
+        "p_m": "{NAME} mal {AGE} rokov {DAYS} dní dozadu.",
+        "p_s": "{NAME} mal {AGE} rokov {DAYS} deň dozadu.",
+        "t": "{NAME} má dnes {AGE} rokov! Všetko najlepšie!"
+    }
+}
